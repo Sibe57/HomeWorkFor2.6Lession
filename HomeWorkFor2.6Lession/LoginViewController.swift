@@ -12,6 +12,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var forgotUserNameButton: UIButton!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     
+    private let userName = "Sibe57"
+    private let password = "qwerty"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonsLabels()
@@ -23,5 +26,31 @@ class LoginViewController: UIViewController {
         forgotPasswordButton.titleLabel?.numberOfLines = 2
         forgotUserNameButton.titleLabel?.numberOfLines = 2
     }
+    
+    @IBAction func forgotUserNameTapped() {
+        let allert = UIAlertController(title: "Ooops!",
+                                       message: "Your name is \(userName) 🧐",
+                                       preferredStyle: .alert)
+        
+        let allertAction = UIAlertAction(title: "OK", style: .default)
+        allert.addAction(allertAction)
+        
+        present(allert, animated: true)
+    }
+    
+    
+    @IBAction func forgotPasswordTapped() {
+        let allert = UIAlertController(
+            title: "Ooops!",
+            message: "Your Password is \(password) 😉",
+            preferredStyle: .alert
+        )
+        
+        let allertAction = UIAlertAction(title: "OK", style: .default)
+        allert.addAction(allertAction)
+        
+        present(allert, animated: true)
+    }
+    
 }
 
