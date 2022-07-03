@@ -30,30 +30,51 @@ class LoginViewController: UIViewController {
         forgotUserNameButton.titleLabel?.numberOfLines = 2
     }
     
-    @IBAction func forgotUserNameTapped() {
-        let allert = UIAlertController(title: "Ooops!",
-                                       message: "Your name is \(userName) 🧐",
-                                       preferredStyle: .alert)
-        
-        let allertAction = UIAlertAction(title: "OK", style: .default)
-        allert.addAction(allertAction)
-        
-        present(allert, animated: true)
-    }
-    
-    
-    @IBAction func forgotPasswordTapped() {
+    private func showDefaultAllert(title: String,
+                                   message: String,
+                                   buttonTitle: String) {
         let allert = UIAlertController(
-            title: "Ooops!",
-            message: "Your Password is \(password) 😉",
+            title: title,
+            message: message,
             preferredStyle: .alert
         )
-        
-        let allertAction = UIAlertAction(title: "OK", style: .default)
+        let allertAction = UIAlertAction(title: buttonTitle, style: .default)
         allert.addAction(allertAction)
         
         present(allert, animated: true)
     }
     
+    @IBAction func forgotUserNameTapped() {
+        showDefaultAllert(title: "Ooops!",
+                          message: "Your username is \(userName) 😉",
+                          buttonTitle: "OK")
+    }
+    
+    @IBAction func forgotPasswordTapped() {
+        showDefaultAllert(title: "Ooops!",
+                          message: "Your password is \(password) 😉",
+                          buttonTitle: "OK")
+    }
+    
+    @IBAction func logInButtonTapped() {
+        guard let userNameInput = userNameTF.text,
+              let passwordInput = passwordTF.text else {
+            showDefaultAllert(title: "Invalid login or password",
+                              message: "Please enter correct login and password",
+                              buttonTitle: "OK")
+            return
+        }
+        if userNameInput == userName && passwordInput == password {
+            
+        } else {
+            showDefaultAllert(title: "Invalid login or password",
+                              message: "Please enter correct login and password",
+                              buttonTitle: "OK")
+            passwordTF.text = ""
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
 }
 
