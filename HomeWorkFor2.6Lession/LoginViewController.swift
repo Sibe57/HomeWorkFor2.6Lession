@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     @IBAction func logInButtonTapped() {
         
         if userNameTF.text == userName && passwordTF.text == password {
-            performSegue(withIdentifier: "toWelcomeScreen", sender: self)
+            performSegue(withIdentifier: "toWelcomeScreen", sender: nil)
         } else {
             showDefaultAllert(title: "Invalid login or password",
                               message: "Please enter correct login and password",
