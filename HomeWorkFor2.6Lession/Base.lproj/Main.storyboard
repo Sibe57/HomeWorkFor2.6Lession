@@ -25,12 +25,12 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Msn-QV-aEu">
                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="giS-7L-RIa">
                                                 <rect key="frame" x="0.0" y="50" width="334" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -39,6 +39,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="logInButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="m2P-Gc-Fq0"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CnJ-70-BLX">
                                         <rect key="frame" x="0.0" y="152" width="334" height="30"/>
@@ -91,24 +94,60 @@
                         <outlet property="forgotUserNameButton" destination="P5R-HH-w4G" id="5kM-6v-I7w"/>
                         <outlet property="passwordTF" destination="giS-7L-RIa" id="rlN-dv-dGs"/>
                         <outlet property="userNameTF" destination="Msn-QV-aEu" id="ZTW-gq-VO9"/>
+                        <segue destination="bbg-nq-ogt" kind="presentation" identifier="toWelcomeScreen" modalPresentationStyle="fullScreen" id="WkP-Xu-RgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="20" y="80"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="hTd-aN-yca">
             <objects>
-                <viewController id="bbg-nq-ogt" sceneMemberID="viewController">
+                <viewController id="bbg-nq-ogt" customClass="WelcomeViewController" customModule="HomeWorkFor2_6Lession" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ymq-xS-sCv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, User!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTt-a9-eBz">
+                                <rect key="frame" x="122.5" y="204" width="169" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1HE-sC-pQB">
+                                <rect key="frame" x="174.5" y="250" width="65" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVS-6F-Y1X">
+                                <rect key="frame" x="169" y="671" width="76" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
+                                <connections>
+                                    <segue destination="bOk-YH-Wj1" kind="unwind" unwindAction="unwindFor:" id="N5O-e1-HrZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Wz2-jq-df4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OTt-a9-eBz" firstAttribute="top" secondItem="Wz2-jq-df4" secondAttribute="top" constant="160" id="0M5-0Z-gtv"/>
+                            <constraint firstItem="Wz2-jq-df4" firstAttribute="bottom" secondItem="vVS-6F-Y1X" secondAttribute="bottom" constant="160" id="BRX-D5-RNh"/>
+                            <constraint firstItem="1HE-sC-pQB" firstAttribute="centerX" secondItem="ymq-xS-sCv" secondAttribute="centerX" id="NZM-hM-eKM"/>
+                            <constraint firstItem="OTt-a9-eBz" firstAttribute="centerX" secondItem="ymq-xS-sCv" secondAttribute="centerX" id="TpD-0q-Omw"/>
+                            <constraint firstItem="1HE-sC-pQB" firstAttribute="top" secondItem="OTt-a9-eBz" secondAttribute="bottom" constant="16" id="isp-hL-J5n"/>
+                            <constraint firstItem="vVS-6F-Y1X" firstAttribute="centerX" secondItem="ymq-xS-sCv" secondAttribute="centerX" id="w5j-Pb-zUP"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IrA-uo-lKL"/>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="OTt-a9-eBz" id="ARr-kk-SLM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9V-zD-0Qi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="bOk-YH-Wj1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="784" y="80"/>
         </scene>

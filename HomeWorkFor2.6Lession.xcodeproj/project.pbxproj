@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		029186122871653C0094BA82 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186112871653C0094BA82 /* WelcomeViewController.swift */; };
 		02A9E03F28707505007C5CC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E03E28707505007C5CC4 /* AppDelegate.swift */; };
 		02A9E04128707505007C5CC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E04028707505007C5CC4 /* SceneDelegate.swift */; };
 		02A9E04328707505007C5CC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9E04228707505007C5CC4 /* LoginViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		029186112871653C0094BA82 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		02A9E03B28707505007C5CC4 /* HomeWorkFor2.6Lession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeWorkFor2.6Lession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A9E03E28707505007C5CC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A9E04028707505007C5CC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				02A9E04028707505007C5CC4 /* SceneDelegate.swift */,
 				02A9E04228707505007C5CC4 /* LoginViewController.swift */,
 				02A9E04428707505007C5CC4 /* Main.storyboard */,
+				029186112871653C0094BA82 /* WelcomeViewController.swift */,
 				02A9E04728707505007C5CC4 /* Assets.xcassets */,
 				02A9E04928707505007C5CC4 /* LaunchScreen.storyboard */,
 				02A9E04C28707505007C5CC4 /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02A9E04328707505007C5CC4 /* LoginViewController.swift in Sources */,
+				029186122871653C0094BA82 /* WelcomeViewController.swift in Sources */,
 				02A9E03F28707505007C5CC4 /* AppDelegate.swift in Sources */,
 				02A9E04128707505007C5CC4 /* SceneDelegate.swift in Sources */,
 			);
