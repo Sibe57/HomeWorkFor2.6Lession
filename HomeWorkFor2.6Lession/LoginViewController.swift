@@ -31,6 +31,44 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let welcomeViewController = segue.destination as?
+                WelcomeViewController else { return }
+        
+        welcomeViewController.userName = userNameTF.text
+    }
+    
+    @IBAction func forgotUserNameTapped() {
+        showDefaultAllert(title: "Ooops!",
+                          message: "Your username is \(userName) 😉",
+                          buttonTitle: "OK")
+    }
+    
+    @IBAction func forgotPasswordTapped() {
+        showDefaultAllert(title: "Ooops!",
+                          message: "Your password is \(password) 😉",
+                          buttonTitle: "OK")
+    }
+    
+    @IBAction func logInButtonTapped() {
+        
+        if userNameTF.text == userName && passwordTF.text == password {
+            performSegue(withIdentifier: "toWelcomeScreen", sender: self)
+        } else {
+            showDefaultAllert(title: "Invalid login or password",
+                              message: "Please enter correct login and password",
+                              buttonTitle: "OK")
+            passwordTF.text = ""
+        }
+    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        userNameTF.text = ""
+        passwordTF.text = ""
+    }
+    
     private func setObservers() {
         
         NotificationCenter.default.addObserver(
@@ -68,50 +106,6 @@ class LoginViewController: UIViewController {
         
         present(allert, animated: true)
     }
-    
-    @IBAction func forgotUserNameTapped() {
-        showDefaultAllert(title: "Ooops!",
-                          message: "Your username is \(userName) 😉",
-                          buttonTitle: "OK")
-    }
-    
-    @IBAction func forgotPasswordTapped() {
-        showDefaultAllert(title: "Ooops!",
-                          message: "Your password is \(password) 😉",
-                          buttonTitle: "OK")
-    }
-    
-    @IBAction func logInButtonTapped() {
-        guard let userNameInput = userNameTF.text,
-              let passwordInput = passwordTF.text else {
-            showDefaultAllert(title: "Invalid login or password",
-                              message: "Please enter correct login and password",
-                              buttonTitle: "OK")
-            return
-        }
-        if userNameInput == userName && passwordInput == password {
-            performSegue(withIdentifier: "toWelcomeScreen", sender: self)
-        } else {
-            showDefaultAllert(title: "Invalid login or password",
-                              message: "Please enter correct login and password",
-                              buttonTitle: "OK")
-            passwordTF.text = ""
-        }
-    }
-    
-    //MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeViewController = segue.destination as?
-                WelcomeViewController else { return }
-        
-        welcomeViewController.userName = userNameTF.text
-    }
-    
-    @IBAction func unwind(for segue: UIStoryboardSegue) {
-        userNameTF.text = ""
-        passwordTF.text = ""
-    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -124,14 +118,14 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if self.view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= 100
+        if view.frame.origin.y == 0 {
+            view.frame.origin.y -= 100
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
         }
     }
 }
