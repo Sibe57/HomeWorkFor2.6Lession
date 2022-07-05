@@ -94,7 +94,7 @@
         <!--Item-->
         <scene sceneID="F8u-nW-VEs">
             <objects>
-                <viewController id="VBF-Vj-Zxe" sceneMemberID="viewController">
+                <viewController id="VBF-Vj-Zxe" customClass="InfoViewController" customModule="HomeWorkFor2_6Lession" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6jh-1a-j2c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,23 +1,19 @@
 //
-//  WelcomeViewController.swift
+//  InfoViewController.swift
 //  HomeWorkFor2.6Lession
 //
-//  Created by Федор Еронин on 03.07.2022.
+//  Created by Федор Еронин on 05.07.2022.
 //
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
-    
-    @IBOutlet weak var welcomeLabel: UILabel!
+class InfoViewController: UIViewController {
     
     var user: User!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("VCwasLoaded")
         setGragient()
-        welcomeLabel.text = "Welcome, \(user.person.name)"
     }
     
     private func setGragient() {
@@ -28,4 +24,16 @@ class WelcomeViewController: UIViewController {
         gradient.colors = [colorTop.cgColor, colorBottom.cgColor]
         view.layer.insertSublayer(gradient, at: 0)
     }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

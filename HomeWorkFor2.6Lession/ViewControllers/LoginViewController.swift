@@ -15,12 +15,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
+    private let user = User.getMockUser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTF.delegate = self
         passwordTF.delegate = self
         setObservers()
-        setButtonsLabels()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,33 +32,37 @@ class LoginViewController: UIViewController {
     //MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeViewController = segue.destination as?
-                WelcomeViewController else { return }
-        
-        welcomeViewController.userName = userNameTF.text
+        guard let tabBar = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBar.viewControllers else { return }
+        for viewController in viewControllers {
+            if let welcomeViewController = viewController as? WelcomeViewController {
+                welcomeViewController.user = user
+            } else if let infoViewController = viewController as? InfoViewController {
+                infoViewController.user = user
+            }
+        }
     }
     
     @IBAction func forgotUserNameTapped() {
         showDefaultAllert(title: "Ooops!",
-                          message: "Your username is \(userName) 😉",
+                          message: "Your username is \(user.userName) 😉",
                           buttonTitle: "OK")
     }
     
     @IBAction func forgotPasswordTapped() {
         showDefaultAllert(title: "Ooops!",
-                          message: "Your password is \(password) 😉",
+                          message: "Your password is \(user.password) 😉",
                           buttonTitle: "OK")
     }
     
     @IBAction func logInButtonTapped() {
         
-        if userNameTF.text == userName && passwordTF.text == password {
+        if userNameTF.text == user.userName && passwordTF.text == user.password {
             performSegue(withIdentifier: "toWelcomeScreen", sender: nil)
         } else {
             showDefaultAllert(title: "Invalid login or password",
                               message: "Please enter correct login and password",
-                              buttonTitle: "OK")
-            passwordTF.text = ""
+                              buttonTitle: "OK", textField: passwordTF)
         }
     }
     
@@ -83,21 +88,19 @@ class LoginViewController: UIViewController {
         )
     }
     
-    private func setButtonsLabels() {
-        forgotUserNameButton.contentHorizontalAlignment = .left
-        forgotPasswordButton.contentHorizontalAlignment = .right
-
-    }
     
     private func showDefaultAllert(title: String,
                                    message: String,
-                                   buttonTitle: String) {
+                                   buttonTitle: String,
+                                   textField: UITextField? = nil) {
         let allert = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
-        let allertAction = UIAlertAction(title: buttonTitle, style: .default)
+        let allertAction = UIAlertAction(title: buttonTitle, style: .default) {_ in
+            textField?.text = ""
+        }
         allert.addAction(allertAction)
         
         present(allert, animated: true)
