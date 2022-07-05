@@ -15,9 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
-    private let userName = "Sibe57"
-    private let password = "qwerty"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTF.delegate = self
@@ -89,8 +86,7 @@ class LoginViewController: UIViewController {
     private func setButtonsLabels() {
         forgotUserNameButton.contentHorizontalAlignment = .left
         forgotPasswordButton.contentHorizontalAlignment = .right
-        forgotPasswordButton.titleLabel?.numberOfLines = 2
-        forgotUserNameButton.titleLabel?.numberOfLines = 2
+
     }
     
     private func showDefaultAllert(title: String,

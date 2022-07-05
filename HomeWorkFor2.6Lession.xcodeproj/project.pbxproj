@@ -39,6 +39,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		026A3E58287481A50072D56B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				02A9E04C28707505007C5CC4 /* Info.plist */,
+				02A9E03E28707505007C5CC4 /* AppDelegate.swift */,
+				02A9E04028707505007C5CC4 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		026A3E59287481C10072D56B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				02A9E04228707505007C5CC4 /* LoginViewController.swift */,
+				029186112871653C0094BA82 /* WelcomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		026A3E5A287481D90072D56B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				02A9E04928707505007C5CC4 /* LaunchScreen.storyboard */,
+				02A9E04428707505007C5CC4 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		026A3E5B287481FE0072D56B /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				02A9E04728707505007C5CC4 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		026A3E5C287482220072D56B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		02A9E03228707504007C5CC4 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +101,11 @@
 		02A9E03D28707505007C5CC4 /* HomeWorkFor2.6Lession */ = {
 			isa = PBXGroup;
 			children = (
-				02A9E03E28707505007C5CC4 /* AppDelegate.swift */,
-				02A9E04028707505007C5CC4 /* SceneDelegate.swift */,
-				02A9E04228707505007C5CC4 /* LoginViewController.swift */,
-				02A9E04428707505007C5CC4 /* Main.storyboard */,
-				029186112871653C0094BA82 /* WelcomeViewController.swift */,
-				02A9E04728707505007C5CC4 /* Assets.xcassets */,
-				02A9E04928707505007C5CC4 /* LaunchScreen.storyboard */,
-				02A9E04C28707505007C5CC4 /* Info.plist */,
+				026A3E5C287482220072D56B /* Models */,
+				026A3E5A287481D90072D56B /* Storyboards */,
+				026A3E59287481C10072D56B /* ViewControllers */,
+				026A3E5B287481FE0072D56B /* Resourses */,
+				026A3E58287481A50072D56B /* App */,
 			);
 			path = HomeWorkFor2.6Lession;
 			sourceTree = "<group>";
