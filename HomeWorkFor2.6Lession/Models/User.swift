@@ -11,7 +11,7 @@ struct User {
     let person: Person
     
     static func getMockUser() -> User {
-        User(userName: "Sibe57", password: "qwerty", person: Person.getMockPerson())
+        User(userName: "1", password: "1", person: Person.getMockPerson())
     }
 }
 
