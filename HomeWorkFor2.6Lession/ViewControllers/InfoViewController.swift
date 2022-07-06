@@ -9,18 +9,18 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var surnameLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var sexLabel: UILabel!
-    @IBOutlet weak var mainActivityLabel: UILabel!
-    @IBOutlet weak var hobbiesLabel: UILabel!
-    @IBOutlet weak var aboutLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var surnameLabel: UILabel!
+    @IBOutlet var ageLabel: UILabel!
+    @IBOutlet var sexLabel: UILabel!
+    @IBOutlet var mainActivityLabel: UILabel!
+    @IBOutlet var hobbiesLabel: UILabel!
+    @IBOutlet var aboutLabel: UILabel!
     
-    @IBOutlet weak var personImage: UIImageView!
+    @IBOutlet var personImage: UIImageView!
     
-    @IBOutlet weak var aboutTitleLabel: UILabel!
-    @IBOutlet weak var hobbiesTitleLabel: UILabel!
+    @IBOutlet var aboutTitleLabel: UILabel!
+    @IBOutlet var hobbiesTitleLabel: UILabel!
     
     var user: User!
 
@@ -31,6 +31,56 @@ class InfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setAnimate()
+    }
+    
+    private func setUserInfo() {
+        
+        let person = user.person
+        
+        nameLabel.text = person.name.uppercased()
+        surnameLabel.text = person.surname.uppercased()
+        mainActivityLabel.text = person.mainActivity
+        aboutLabel.text = person.about
+        
+        if let age = person.age {
+            let lastDigitOfAge = age % 10
+            let years: String
+            switch lastDigitOfAge {
+            case 0, 5...9:
+                years = "лет"
+            case 2...4:
+                years = "года"
+            default:
+                years = "год"
+            }
+            ageLabel.text = "\(age) \(years)"
+        } else {
+            ageLabel = nil
+        }
+        
+        if let isMale = person.isMale {
+            sexLabel.text = isMale ? "Мужчина" : "Женщина"
+        } else {
+            sexLabel.text = nil
+        }
+        
+        hobbiesLabel.text = person.hobbies.joined(separator: ", ")
+        
+        personImage.image = UIImage(named: person.photo)
+    }
+    
+    private func setGragient() {
+        let gradient = CAGradientLayer()
+        let colorTop = UIColor(displayP3Red: 0.5, green: 0, blue: 0.5, alpha: 0.6)
+        let colorBottom = UIColor(displayP3Red: 0, green: 1, blue: 1, alpha: 0.5)
+        gradient.frame = view.bounds
+        gradient.colors = [colorTop.cgColor, colorBottom.cgColor]
+        view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    private func setAnimate() {
         nameLabel.alpha = 0
         surnameLabel.alpha = 0
         ageLabel.alpha = 0
@@ -54,41 +104,5 @@ class InfoViewController: UIViewController {
             self.hobbiesTitleLabel.alpha = 1
             self.aboutTitleLabel.alpha = 1
         }
-
-    }
-    
-    private func setUserInfo() {
-        
-        let person = user.person
-        
-        nameLabel.text = person.name.uppercased()
-        surnameLabel.text = person.surname.uppercased()
-        mainActivityLabel.text = person.mainActivity
-        aboutLabel.text = person.about
-        
-        if let age = person.age {
-            ageLabel.text = String(age)
-        } else {
-            ageLabel = nil
-        }
-        
-        if let isMale = person.isMale {
-            sexLabel.text = isMale ? "Мужчина" : "Женщина"
-        } else {
-            sexLabel.text = nil
-        }
-        
-        hobbiesLabel.text = person.hobbies.joined(separator: ", ")
-        
-        personImage.image = UIImage(named: person.photo)
-    }
-    
-    private func setGragient() {
-        let gradient = CAGradientLayer()
-        let colorTop = UIColor(displayP3Red: 0.5, green: 0, blue: 0.5, alpha: 0.6)
-        let colorBottom = UIColor(displayP3Red: 0, green: 1, blue: 1, alpha: 0.5)
-        gradient.frame = view.bounds
-        gradient.colors = [colorTop.cgColor, colorBottom.cgColor]
-        view.layer.insertSublayer(gradient, at: 0)
     }
 }

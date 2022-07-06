@@ -9,30 +9,21 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var handLabel: UILabel!
-    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet var welcomeLabel: UILabel!
+    @IBOutlet var handLabel: UILabel!
+    @IBOutlet var logoutButton: UIButton!
     
     var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("VCwasLoaded")
         setGragient()
         welcomeLabel.text = "Welcome, \(user.person.name)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        welcomeLabel.alpha = 0
-        handLabel.alpha = 0
-        logoutButton.alpha = 0
-        
-        UIView.animate(withDuration: 0.2) {
-            self.welcomeLabel.alpha = 1
-            self.handLabel.alpha = 1
-            self.logoutButton.alpha = 1
-        }
+            super.viewWillAppear(animated)
+        setAnimate()
     }
     
     private func setGragient() {
@@ -42,5 +33,17 @@ class WelcomeViewController: UIViewController {
         gradient.frame = view.bounds
         gradient.colors = [colorTop.cgColor, colorBottom.cgColor]
         view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    private func setAnimate() {
+        welcomeLabel.alpha = 0
+        handLabel.alpha = 0
+        logoutButton.alpha = 0
+        
+        UIView.animate(withDuration: 0.2) {
+            self.welcomeLabel.alpha = 1
+            self.handLabel.alpha = 1
+            self.logoutButton.alpha = 1
+        }
     }
 }

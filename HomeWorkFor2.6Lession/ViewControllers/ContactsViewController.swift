@@ -26,14 +26,8 @@ class ContactsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        titleLabel.alpha = 0
-        urlStack.alpha = 0
-        noContactsLabel.alpha = 0
-        UIView.animate(withDuration: 0.20) {
-            self.titleLabel.alpha = 1
-            self.urlStack.alpha = 1
-            self.noContactsLabel.alpha = 1
-        }
+        super.viewWillAppear(animated)
+        setAnimate()
     }
     
     private func setGragient() {
@@ -86,5 +80,16 @@ class ContactsViewController: UIViewController {
             return UIImage(named: "fbLogo")
         }
         return nil
+    }
+    
+    private func setAnimate() {
+        titleLabel.alpha = 0
+        urlStack.alpha = 0
+        noContactsLabel.alpha = 0
+        UIView.animate(withDuration: 0.20) {
+            self.titleLabel.alpha = 1
+            self.urlStack.alpha = 1
+            self.noContactsLabel.alpha = 1
+        }
     }
 }

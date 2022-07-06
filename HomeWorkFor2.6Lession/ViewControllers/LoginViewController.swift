@@ -8,19 +8,14 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
-    @IBOutlet weak var forgotUserNameButton: UIButton!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
     
-    @IBOutlet weak var userNameTF: UITextField!
-    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet var userNameTF: UITextField!
+    @IBOutlet var passwordTF: UITextField!
     
     private let user = User.getMockUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameTF.delegate = self
-        passwordTF.delegate = self
         setObservers()
     }
     
@@ -45,16 +40,11 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func forgotUserNameTapped() {
-        showDefaultAllert(title: "Ooops!",
-                          message: "Your username is \(user.userName) 😉",
-                          buttonTitle: "OK")
-    }
-    
-    @IBAction func forgotPasswordTapped() {
-        showDefaultAllert(title: "Ooops!",
-                          message: "Your password is \(user.password) 😉",
-                          buttonTitle: "OK")
+    @IBAction func forgotInfoTapped(_ sender: UIButton) {
+        let message = sender.tag == 0
+            ? "Your username is \(user.userName)😉"
+            : "Your password is \(user.password)😉"
+        showDefaultAllert(title: "Ooops!", message: message, buttonTitle: "OK")
     }
     
     @IBAction func logInButtonTapped() {
@@ -74,6 +64,9 @@ class LoginViewController: UIViewController {
     }
     
     private func setObservers() {
+        
+        userNameTF.delegate = self
+        passwordTF.delegate = self
         
         NotificationCenter.default.addObserver(
             self,
