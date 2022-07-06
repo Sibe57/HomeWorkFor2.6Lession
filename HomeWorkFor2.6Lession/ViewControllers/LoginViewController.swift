@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
                 welcomeViewController.user = user
             } else if let infoViewController = viewController as? InfoViewController {
                 infoViewController.user = user
+            } else if let contactsViewController = viewController as? ContactsViewController {
+                contactsViewController.contacts = user.person.contacts
             }
         }
     }

@@ -10,6 +10,8 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var handLabel: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
     
     var user: User!
     
@@ -18,6 +20,19 @@ class WelcomeViewController: UIViewController {
         print("VCwasLoaded")
         setGragient()
         welcomeLabel.text = "Welcome, \(user.person.name)"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        welcomeLabel.alpha = 0
+        handLabel.alpha = 0
+        logoutButton.alpha = 0
+        
+        UIView.animate(withDuration: 0.2) {
+            self.welcomeLabel.alpha = 1
+            self.handLabel.alpha = 1
+            self.logoutButton.alpha = 1
+        }
     }
     
     private func setGragient() {

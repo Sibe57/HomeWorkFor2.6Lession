@@ -11,7 +11,7 @@ struct User {
     let person: Person
     
     static func getMockUser() -> User {
-        User(userName: "1", password: "1", person: Person.getMockPerson())
+        User(userName: "Sibe57", password: "qwerty", person: Person.getMockPerson())
     }
 }
 
@@ -23,14 +23,14 @@ struct Person {
     let isMale: Bool? //да простят меня любители современной повестки за бинарный пол :)
     let age: Int?
     let mainActivity: String?
-    let hobbies: [String]?
+    let hobbies: [String]
     let about: String?
-    let socialMediaLinks: [String]?
+    let contacts: [String]?
     
     static func getMockPerson() -> Person {
         Person(name: "Федор",
                surname: "Еронин",
-               photo: "MyPhoto",
+               photo: "myPhoto",
                isMale: true,
                age: 26,
                mainActivity: "iOS development",
@@ -38,7 +38,7 @@ struct Person {
                 ["Физика", "Туризм", "Киберспорт", "Легкая атлетика", "Программирование"],
                about:
                 "В прошлом инженер геодезист, разбираюсь во многом, но по чуть-чуть",
-               socialMediaLinks:
+               contacts:
                 ["https://github.com/Sibe57",
                  "https://t.me/sibe57",
                  "https://vk.com/sibe57" ])
