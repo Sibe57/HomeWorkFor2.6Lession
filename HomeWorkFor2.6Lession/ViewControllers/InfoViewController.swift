@@ -19,6 +19,8 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var personImage: UIImageView!
     
+    @IBOutlet weak var aboutTitleLabel: UILabel!
+    @IBOutlet weak var hobbiesTitleLabel: UILabel!
     
     var user: User!
 
@@ -37,6 +39,8 @@ class InfoViewController: UIViewController {
         hobbiesLabel.alpha = 0
         aboutLabel.alpha = 0
         personImage.alpha = 0
+        hobbiesTitleLabel.alpha = 0
+        aboutTitleLabel.alpha = 0
         
         UIView.animate(withDuration: 0.2) {
             self.nameLabel.alpha = 1
@@ -47,6 +51,8 @@ class InfoViewController: UIViewController {
             self.hobbiesLabel.alpha = 1
             self.aboutLabel.alpha = 1
             self.personImage.alpha = 1
+            self.hobbiesTitleLabel.alpha = 1
+            self.aboutTitleLabel.alpha = 1
         }
 
     }
@@ -55,8 +61,8 @@ class InfoViewController: UIViewController {
         
         let person = user.person
         
-        nameLabel.text = person.name
-        surnameLabel.text = person.surname
+        nameLabel.text = person.name.uppercased()
+        surnameLabel.text = person.surname.uppercased()
         mainActivityLabel.text = person.mainActivity
         aboutLabel.text = person.about
         
@@ -85,16 +91,4 @@ class InfoViewController: UIViewController {
         gradient.colors = [colorTop.cgColor, colorBottom.cgColor]
         view.layer.insertSublayer(gradient, at: 0)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -199,8 +199,10 @@
                     <tabBarItem key="tabBarItem" title="About me" image="person.circle" catalog="system" selectedImage="person.crop.circle" id="NCc-uJ-20b"/>
                     <connections>
                         <outlet property="aboutLabel" destination="0gk-8r-JAj" id="R9u-BH-i4u"/>
+                        <outlet property="aboutTitleLabel" destination="SYg-TV-JbN" id="ipY-yR-zn0"/>
                         <outlet property="ageLabel" destination="xDd-Sb-mlA" id="4mS-En-Il7"/>
                         <outlet property="hobbiesLabel" destination="nfz-xI-jWB" id="wyu-FE-WTs"/>
+                        <outlet property="hobbiesTitleLabel" destination="aQb-Pu-Ye1" id="KGD-Nm-k3U"/>
                         <outlet property="mainActivityLabel" destination="4G1-M5-UfI" id="5XY-vn-JrH"/>
                         <outlet property="nameLabel" destination="nJ9-ug-xxf" id="r9V-e9-YqR"/>
                         <outlet property="personImage" destination="ybf-8u-S7b" id="nTb-l9-R5v"/>
